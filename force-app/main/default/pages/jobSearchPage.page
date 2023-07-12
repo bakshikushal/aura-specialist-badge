@@ -1,0 +1,37 @@
+<apex:page controller="JobSearchController" sidebar="false" showHeader="false" standardStylesheets="true" action="{!searchpositionList}">
+    <apex:form >
+        <apex:pageBlock title="Search for Job Positions">
+            <apex:pageblockSection title="Select Dept & Location" columns="1">
+                <apeX:panelGrid columns="1">
+                    <apex:outputLabel value="Select Department"></apex:outputLabel>
+                    <apex:selectList value="{!SelectedDept}" size="1">
+                       <apex:selectOptions value="{!DeptOptions}"></apex:selectOptions>                 
+                    </apex:selectList>
+                </apeX:panelGrid>
+                <apex:panelGrid columns="1" title="Locations">
+                     <apex:outputLabel value="Select Location"></apex:outputLabel>   
+                      <apex:selectList value="{!Selectedloc}" size="1">
+                          <apex:selectOptions value="{!LocOptions}"></apex:selectOptions>
+                      </apex:selectList>  
+                </apex:panelGrid>
+                <apex:commandButton action="{!searchpositionList}" value="Search Positions" />
+            </apex:pageblockSection>
+            <apex:pageblockSection title="Positions List">
+                <apex:pageblockTable value="{!positionList}" var="pos">
+                    <apex:column value="{!pos.name}"/>
+                    <apex:column headerValue="Position Link" width="200">
+                        <apex:outputLink value="selectedPosition?id={!pos.id}" id="thelink">
+                            {!pos.name}
+                        </apex:outputLink>
+                    </apex:column>
+                    <apex:column value="{!pos.Location__c}"/>
+                    <apex:column value="{!pos.Department__c}"/>
+                    <apex:column value="{!pos.Educational_Requirement__c}"/>
+                    <apex:column value="{!pos.Hiring_Manager__c}"/>
+                    <apex:column value="{!pos.Location_City_State__c}"/>
+                    <apex:column value="{!pos.Start_Date__c}"/>
+                </apex:pageblockTable>
+            </apex:pageblockSection> 
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

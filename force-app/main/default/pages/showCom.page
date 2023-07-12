@@ -1,0 +1,30 @@
+<apex:page controller="test_class1">
+    <apex:form >
+        <apex:pageBlock title="Show Companies">
+            <apex:pageBlockSection title="Comapany PMP">
+                {!com_name }<br/>
+                {!com_obj[0].Name}<br/>
+            </apex:pageBlockSection>>
+        
+            <apex:pageBlockSection title="Comapany CSC">                
+                {!com_name }<br/>
+                {!com_obj[0].Name}<br/>        
+            </apex:pageBlockSection>>
+        
+             <apex:pageBlockSection title="Comapany List 2">
+                
+                <apex:pageBlockTable value="{!com_list}" var="c">
+                    <apex:column value="{!c.Name}"  />
+                    <apex:column value="{!c.Location__c}"  />
+                    <apex:column value="{!c.NoOfEmployees__c }"  />                
+                </apex:pageBlockTable>>
+        
+            </apex:pageBlockSection>>
+        
+        
+        
+        </apex:pageBlock>>
+    
+    </apex:form>> 
+ 
+</apex:page>

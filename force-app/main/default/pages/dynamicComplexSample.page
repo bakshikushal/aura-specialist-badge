@@ -1,0 +1,16 @@
+<apex:page standardController="Contact" extensions="DynamicComplexSample" >
+ <apex:form >
+     <apex:pageBlock title="Contact Details" >
+     <apex:pageBlockSection title="Detail" columns="1"> 
+         <apex:repeat value="{!ConList}" var="cf">
+             <apex:outputField value="{!con[cf]}" rendered="{!IF(contains(cf, "Account"), false, true)}" />
+             <apex:inputField value="{!con[cf]}" rendered="{!IF(contains(cf, "Account"), true, false)}" />
+         </apex:repeat>     
+     </apex:pageBlockSection>
+     </apex:pageBlock>
+     
+ 
+ </apex:form>
+     
+ 
+</apex:page>

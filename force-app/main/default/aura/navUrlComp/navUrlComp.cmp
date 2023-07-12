@@ -1,0 +1,7 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes">
+    <aura:attribute name="url" type="String" />
+    <aura:attribute name="pageReference" type="Object" />
+    <aura:handler name="init" value="{! this }" action="{! c.init }" />
+    <lightning:navigation aura:id="navService" />
+    <a href="{!v.url}">Link</a>
+</aura:component>

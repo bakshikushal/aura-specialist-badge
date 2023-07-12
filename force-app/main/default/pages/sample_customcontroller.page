@@ -1,0 +1,19 @@
+<apex:page controller="Sample_customcontclass" sidebar="false" >
+      {!$User.FirstName}  {!$User.LastName}   
+      {!acc.name}
+      {!acc.phone}
+      <apex:form >
+          <apex:pageBlock title="Account Details">
+          <apex:pageBlockButtons >
+                      <apex:commandButton value="Save New Account" action="{!saveIt}"/>
+           </apex:pageBlockButtons> 
+              <apex:pageblockSection >
+                  <apex:inputField value="{!acc.name}"/>
+                  <apex:inputField value="{!acc.phone}"/>
+                  <apex:inputField value="{!acc.fax}"/>
+                                                         
+              </apex:pageblockSection>          
+          </apex:pageBlock>   
+      </apex:form>
+      
+</apex:page>

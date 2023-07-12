@@ -1,0 +1,16 @@
+<apex:page showHeader="false" sidebar="false">
+	<apex:includeLightning />
+	<div id="lightning" />
+	<script>
+		$Lightning.use("c:AccountSites", function(){
+			$Lightning.createComponent("c:accountsListAuraComp",
+				"",
+				"lightning",
+				function(cmp){
+                    console.log('Component Created Successfully!!')
+                }
+			);
+		});
+	</script>
+
+</apex:page>

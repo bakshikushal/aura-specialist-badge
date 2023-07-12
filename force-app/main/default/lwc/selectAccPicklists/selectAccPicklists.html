@@ -1,0 +1,31 @@
+<template>
+    <lightning-card>
+        <lightning-layout>
+            <lightning-layout-item size="12">
+                <div >
+                    <lightning-card title="Select Your Options To View Accounts" icon-name="standard:account">
+                        <div slot="actions">
+                            <lightning-button label="View Accounts Via REST Service" variant="brand" onclick={callRestService}></lightning-button>
+                        </div>
+                        <div class="slds-grid slds-gutters slds-p-around_small slds-align_absolute-center card ">
+                            <div class="slds-col slds-size_1-of-4">
+                                <lightning-combobox label="Select Org" variant="stacked" value={selectedCity}
+                                    options={orgOptions} onchange={handleOrgChange}></lightning-combobox>
+                            </div>                            
+                            <div class="slds-col slds-size_1-of-4">
+                                <lightning-combobox label="Select City" variant="stacked" value={selectedCity}
+                                    options={cityOptions} onchange={handleCityChange}></lightning-combobox>
+                            </div>
+                            <div class="slds-col slds-size_1-of-4">
+                                <lightning-combobox label="Select Industry" variant="stacked" value={selectedIndustry}
+                                    options={industryOptions} onchange={handleIndChange}></lightning-combobox>
+                            </div>
+                        </div>
+                    </lightning-card>               
+                 </div>
+
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+
+</template>

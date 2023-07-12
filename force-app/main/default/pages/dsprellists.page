@@ -1,0 +1,3 @@
+<apex:page standardController="ITCompany__c">
+    <apex:relatedList list="ITProjects__r"/> 
+</apex:page>

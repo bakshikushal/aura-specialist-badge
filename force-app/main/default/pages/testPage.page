@@ -1,0 +1,4 @@
+<apex:page controller="testController"  >
+{!str} , {!str} , {!str2}
+  
+</apex:page>

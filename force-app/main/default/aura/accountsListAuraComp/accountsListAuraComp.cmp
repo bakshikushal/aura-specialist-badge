@@ -1,0 +1,42 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:appHostable,lightning:isUrlAddressable"
+    controller="getAccountsList">
+    <aura:attribute name="accList" type="Account[]" />
+    <aura:attribute name="showAcc" type="Boolean" default="true" />
+    <aura:attribute name="accId" type="Id" />
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+    <aura:attribute name="spinner" type="boolean" default="FALSE" />
+    <!--HERE GOES OUR MAKUP FOR THE UI-->
+    <lightning:card>
+        <div style="background-color: dimgray;">
+            <div>
+                <lightning:layout>
+                    <lightning:layoutItem size="12" class="slds-p-around_x-small">
+                        <lightning:card title="Show Accounts" iconName="custom:custom30" class="hoverCard">
+                            <div class="slds-align_absolute-center slds-p-around_x-small">
+                                <lightning:button label="Show Accounts" variant="success" onclick="{!c.showAcc}" />
+                                <lightning:button label="Hide Accounts" variant="destructive" onclick="{!c.hideAcc}" />
+                            </div>
+                        </lightning:card>
+                    </lightning:layoutItem>
+                </lightning:layout>
+            </div>
+            <div>
+                <aura:if isTrue="{!v.showAcc}">
+                    <lightning:layout multipleRows="true">
+                        <aura:iteration items="{!v.accList}" var="acc">
+                            <lightning:layoutItem size="9" largeDeviceSize="3" mediumDeviceSize="6"
+                                class="slds-p-around_x-small">
+                                <div style="background-color:gold  ">
+                                    <c:displayAccTile accRecord="{!acc}"></c:displayAccTile>
+                                </div>
+                                
+                            </lightning:layoutItem>
+                        </aura:iteration>
+                    </lightning:layout>
+                </aura:if>
+            </div>
+        </div>
+        
+    </lightning:card>
+
+</aura:component>

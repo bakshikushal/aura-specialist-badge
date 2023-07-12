@@ -1,0 +1,30 @@
+<apex:page standardController="Account" recordSetVar="acc">
+<apex:pageBlock >
+    <apex:pageBlockSection >
+        <apex:tabPanel switchType="AJAX">
+            <apex:tab >
+                <apex:dataTable value="{!acc}" var="a">
+                    <apex:column >
+                        <apex:facet name="header" >
+                            Name
+                        </apex:facet>
+                        <apex:outputfield value="{!a.name}"/>
+                    </apex:column>             
+                </apex:dataTable>            
+            </apex:tab>
+            <apex:tab >
+                <apex:dataTable value="{!acc}" var="a">
+                    <apex:column >
+                        <apex:facet name="header" >
+                            Phone
+                        </apex:facet>
+                        <apex:outputfield value="{!a.phone}"/>
+                    </apex:column>             
+                </apex:dataTable>
+            </apex:tab>
+        </apex:tabPanel>
+        
+        
+    </apex:pageBlockSection>
+</apex:pageBlock>  
+</apex:page>

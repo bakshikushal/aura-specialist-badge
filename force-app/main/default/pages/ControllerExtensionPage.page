@@ -1,0 +1,10 @@
+<apex:page standardController="Account" extensions="ControllerExtensionClass" >
+ <apex:form >
+     <apex:pageblock >
+         <apex:pageBlockSection columns="1">
+             <apex:inputField value="{!account.name}"/>
+             {!greeting}
+         </apex:pageBlockSection>
+     </apex:pageblock>
+ </apex:form>
+</apex:page>

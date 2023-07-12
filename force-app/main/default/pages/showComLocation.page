@@ -1,0 +1,21 @@
+<apex:page controller="showCompanyDetails">
+    <apex:pageblock Title="Companies Locations">
+       <apex:tabPanel >
+           <apex:tab label="Mumbai" labelWidth="50">
+               <apex:pageBlockTable value="{!com1 }" var="c1">
+                    <apex:column value="{!c1.Name}"/>
+                    <apex:column value="{!c1.Location__c}"/>
+                    <apex:column value="{!c1.NoOfEmployees__c}"/>   
+               </apex:pageBlockTable>
+           </apex:tab>
+           <apex:tab label="Delhi" labelWidth="50">
+               <apex:pageBlockTable value="{!com2 }" var="c2">
+                    <apex:column value="{!c2.Name}"/>
+                    <apex:column value="{!c2.Location__c}"/>
+                    <apex:column value="{!c2.NoOfEmployees__c}"/>   
+               </apex:pageBlockTable>
+           </apex:tab>
+       </apex:tabPanel>
+    </apex:pageblock>
+  
+</apex:page>

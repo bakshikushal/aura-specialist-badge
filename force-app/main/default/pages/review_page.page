@@ -1,0 +1,9 @@
+<apex:page controller="enter_companyproject">
+<apex:form >
+<apex:pageBlock >
+    
+    <apex:commandButton value="Submit Data" action="{!submit_comproj}" />
+    
+</apex:pageBlock>
+</apex:form>
+</apex:page>

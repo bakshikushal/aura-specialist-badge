@@ -1,0 +1,17 @@
+<aura:component>
+    <aura:attribute name="item" type="Camping_Item__c" required="true" default="{
+                    									'sobjecttype' : 'Camping_Item__c',
+                                                          'Price__c': 0,
+                                                             'Quantity__c': 0
+                                                               }"/>
+    <aura:attribute name="disabled" type="Boolean" default = "fales"/>
+    
+   	<div class="slds-p-around_medium">
+		<div > <lightning:formattedtext value="{!v.item.name}"/> </div>
+    	<div ><lightning:formattedNumber value="{!v.item.Price__c}"/> </div>
+		<div ><lightning:formattedNumber value="{!v.item.Quantity__c}" style="currency" currencyCode="USD"/></div>
+    	<div ><lightning:input type="toggle" checked="{!v.item.Packed__c}" /></div>
+    	<div ><lightning:button label="Packed" onclick="{!c.packItem}" disabled="{!v.disabled}"/> </div>
+	</div>
+    
+</aura:component>

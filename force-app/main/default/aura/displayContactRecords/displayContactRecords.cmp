@@ -1,0 +1,43 @@
+<aura:component controller="getAccountsList">
+    <aura:attribute name="accountId" type="Id" default="" />
+    <aura:attribute name="showSpinner" type="Boolean" default="false" />
+    <aura:attribute name="pageReference" type="Object" />
+    <aura:attribute name="showConList" type="Boolean" default="false" />
+    <aura:attribute name="conList" type="Contact[]" />
+    <aura:handler name="init" value="{!this}" action="{!c.getContacts}" />
+    <aura:handler name="change" value="{!v.accountId}" action="{!c.getContacts}" />
+
+    <lightning:navigation aura:id="navService" />
+    
+        <aura:if isTrue="{!v.showSpinner}">
+            <lightning:spinner size="small"/>
+        </aura:if>
+        
+        <aura:if isTrue="{!v.showConList}">
+        <lightning:card title="Contact Name: ">
+            <aura:set attribute="actions">
+                <lightning:button label="Delete Contacts" onclick="{!c.delContacts}" variant="destructive" />
+            </aura:set>
+            <aura:iteration items="{!v.conList}" var="con">
+                <div class="slds-p-around_small">
+                    <lightning:input type="checkbox" style="display: inline;" fieldLevelHelp="Mark For Deletion" value="{!con.Id}" aura:id="conToDelete" />
+                    <span style="font-weight: bold;">
+                        {!con.Name} 
+                    </span>
+                </div>
+            </aura:iteration>
+        </lightning:card>
+        <aura:set attribute="else">
+            <lightning:card title="No Related Contacts">
+                <!--    
+            <div class="slds-p-around_small">                    
+                    <lightning:button label="Add New Contacts" onclick="{!c.addContacts}" variant="success" />    
+                </div>
+            -->
+            </lightning:card>
+
+        </aura:set>
+    </aura:if>
+    
+    
+</aura:component>

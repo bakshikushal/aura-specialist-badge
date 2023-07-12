@@ -1,0 +1,11 @@
+<apex:page standardController="Account" >
+<apex:form >
+    <apex:pageBlock title="Page Details for {!$User.FirstName}"> 
+    <apex:pageblockSection >
+        <apex:inputField value="{!account.site}"  label="Site Info"/>
+        <apex:inputtext value="{!account.phone}" />
+        <apex:commandButton value="save site" action="{!save}" />
+    </apex:pageblockSection>    
+    </apex:pageBlock>
+</apex:form>  
+</apex:page>

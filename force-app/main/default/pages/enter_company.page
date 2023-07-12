@@ -1,0 +1,11 @@
+<apex:page controller="enter_companyproject">
+<apex:form >
+    <apex:pageblock title="Enter Company Details" >
+        <apex:pageblockSection >
+            <apex:inputfield value="{!com1.name}"/>
+            <apex:inputField value="{!com1.Location__c}" /> 
+        </apex:pageblockSection>
+        <apex:commandButton value="Next Page" action="{!enter_project}"/>    
+    </apex:pageblock>
+</apex:form>    
+</apex:page>

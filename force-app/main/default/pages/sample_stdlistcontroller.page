@@ -1,0 +1,36 @@
+<apex:page standardController="Account" tabStyle="Account" sidebar="false" recordsetVar="acc">
+<apex:form >
+    <apex:pageBlock Title="Accoun Details">
+        
+        <apex:pageBlockButtons location="Top">
+            <apex:commandButton value="Save It" action="{!save}"/>
+            <apex:commandButton value="First Few" action="{!first}"/>
+        </apex:pageBlockButtons>
+        
+        <apex:panelGrid columns="2">
+            <apex:outputLabel value="Select"> </apex:outputLabel>
+            <apex:selectList value="{!filterid}" size="1">
+                <apex:selectOptions value="{!listviewoptions}" ></apex:selectOptions>
+                <apex:actionSupport event="onchange" reRender="acc_list"/>
+            </apex:selectList>
+        </apex:panelGrid>
+        
+        <apex:pageBlockSection Title="Account Names">
+            <apex:pageBlockTable value="{!acc}" var="a" id="acc_list">
+                <apex:column value="{!a.name}"/>
+                <apex:column headerValue="Phone #">
+                    <apex:inputField value="{!a.phone}"/>
+                </apex:column>    
+                <apex:inlineEditSupport />
+            </apex:pageBlockTable>
+        </apex:pageBlockSection>
+        
+        <apex:pageBlockSection title="Using Data List">
+            <apex:dataList var="a" value="{!acc}">
+                {!a.fax}
+            </apex:dataList>        
+        </apex:pageBlockSection>
+        
+    </apex:pageBlock>
+</apex:form>        
+</apex:page>

@@ -1,0 +1,13 @@
+<apex:page controller="dynamicListMaps">
+   <apex:form >
+    <apex:repeat value="{!iter}" var="nm"> 
+           <apex:outputText value="{!people[nm]}"/>  <br/>
+    </apex:repeat> 
+    
+    <apex:repeat value="{!Ppl_Map}" var="ppl">
+         <apex:outputtext value="{!ppl}"/>    
+         <apex:outputtext value="{!Ppl_Map[ppl]}"/>    <br/>
+    </apex:repeat>
+    
+   </apex:form> 
+</apex:page>

@@ -1,0 +1,17 @@
+<apex:page StandardController="Account" renderAs="PDF">
+  <apex:pageBlock >
+      <apex:panelGrid columns="2" border="1">
+          <apex:outputLabel value="Name" for="Name"></apex:outputLabel>
+          <apex:outputText value="{!account.name}" id="Name"></apex:outputText>
+          
+          <apex:outputLabel value="Ac No" for="ACNO"></apex:outputLabel>
+          <apex:outputText value="{!account.AccountNumber}" id="ACNO"></apex:outputText>
+          
+          <apex:outputLabel value="Owner Name" ></apex:outputLabel>
+          <apex:outputText value="{!account.owner.name}" ></apex:outputText>
+          
+                   
+      </apex:panelGrid>
+  
+  </apex:pageBlock>
+</apex:page>

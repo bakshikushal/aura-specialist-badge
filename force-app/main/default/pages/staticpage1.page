@@ -1,0 +1,5 @@
+<apex:page controller="staticImage">
+  <apex:variable var="img" value="{!imageName}"/>
+  <apex:image url="{!$Resource.Static1}" width="700" height="200"/>
+  
+</apex:page>

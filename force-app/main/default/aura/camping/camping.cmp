@@ -1,0 +1,6 @@
+<aura:component >
+    <div class = "slds-p-around_medium">
+        <c:campingHeader/>
+    	<c:campingList/>
+    </div>
+</aura:component>

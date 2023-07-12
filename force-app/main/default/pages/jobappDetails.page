@@ -1,0 +1,36 @@
+<apex:page standardController="Job_Application__c" recordSetVar="jobapps" id="thePage">
+   <apex:form >
+    <apex:pageBlock title="Job Applications">
+        <apex:actionRegion >
+            <apex:outputText value="No Of Records"> </apex:outputText>
+            <apex:selectList value="{!pagesize}" size="1">
+                <apex:selectOption itemLabel="5" itemValue="5"></apex:selectOption>
+                <apex:selectOption itemLabel="10" itemValue="10"></apex:selectOption>
+                <apex:selectOption itemLabel="15" itemValue="15"></apex:selectOption>
+                <apex:actionSupport event="onchange" reRender="ja_list"/>
+            </apex:selectList>           
+        </apex:actionRegion>  
+        <apex:panelGrid columns="2">
+            <apex:outputLabel value="Select"> </apex:outputLabel>
+            <apex:selectList value="{!filterId}" size="1">
+                <apex:selectOptions value="{!listViewOptions}" ></apex:selectOptions>
+                <apex:actionSupport event="onchange" reRender="ja_list"/>
+            </apex:selectList>
+        </apex:panelGrid>
+        <apex:pageBlockSection title="Details">
+            <apex:pageBlockTable value="{!jobapps}" var="ja" id="ja_list">
+                <apex:column value="{!ja.name}" width="20"/>
+                <apex:column value="{!ja.Candidate__c}"/>
+                <apex:column value="{!ja.Candidate__r.First_Name__c}"/>
+                <apex:column value="{!ja.Candidate__r.Last_Name__c}"/>
+                <apex:column value="{!ja.Position__c}" width="500"/>
+                <apex:column value="{!ja.Position__r.Job_Description__c}" />
+            </apex:pageBlockTable>
+        </apex:pageBlockSection>    
+    </apex:pageBlock> 
+    <apex:panelGrid columns="2" id="navigation">
+        <apex:commandLink value="Previous Page" action="{!Previous}" rendered="{!hasPrevious}"/>
+        <apex:commandLink value="Next Page" action="{!Next}" rendered="{!hasNext}"/>
+    </apex:panelGrid>   
+   </apex:form> 
+</apex:page>

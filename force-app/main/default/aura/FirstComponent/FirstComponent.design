@@ -1,0 +1,6 @@
+<design:component>
+    <design:attribute name="pageHeading" label="Page Heading" datasource="Form for Students,Form for boys,Form for Girls" description="Give your page heading here!!">
+    	
+    
+    </design:attribute>	
+</design:component>

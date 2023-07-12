@@ -1,0 +1,14 @@
+<apex:page controller="Sample_CustomSetController" >
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection >
+                <apex:pageblockTable value="{!Accts}" var="a">
+                    <apex:column value="{!a.name}"/>
+                    <apex:column value="{!a.phone}"/>
+                    <apex:column value="{!a.fax}"/>
+                </apex:pageblockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+
+</apex:page>

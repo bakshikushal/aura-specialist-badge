@@ -1,0 +1,37 @@
+<aura:component>
+    <aura:attribute name="accountId" type="String" />
+    <div class="slds-page-header">
+        <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">
+                <div class="slds-media">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container slds-icon-standard-opportunity" title="opportunity">
+                            <lightning:icon iconName="standard:lead" size="medium" />
+                            <span class="slds-assistive-text">Account Details</span>
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <div class="slds-page-header__name">
+                            <div class="slds-page-header__name-title">
+                                <h1>
+                                    <span class="slds-page-header__title slds-truncate" title="Account Details">Account
+                                        Details</span>
+                                </h1>
+                            </div>
+                        </div>
+                        <p class="slds-page-header__name-meta">Account ID: {!v.accountId}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-p-horizontal_small">
+                <a href="#" onclick="{!c.btnclick}">
+                    <lightning:icon iconName="utility:chat" size="medium" title="Click to Chat" />
+                </a>
+                <lightning:buttonIcon iconName="utility:chat" size="large" title="Click to Chat" aura:id="btn"
+                    value="{!v.accountId}" onclick="{!c.btnclick}" />
+            </div>
+
+        </div>
+    </div>
+
+</aura:component>

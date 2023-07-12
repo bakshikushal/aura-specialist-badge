@@ -1,0 +1,26 @@
+<aura:component implements="flexipage:availableForAllPageTypes,lightning:isUrlAddressable"
+    controller="getAccountsList">
+    <aura:attribute name="accRecId" type="string" />
+    <aura:attribute name="showAccDetails" type="Boolean" default="false" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.pageReference}" action="{!c.refreshPage}" />
+    <lightning:navigation aura:id="navService" />
+    <aura:if isTrue="{!v.showAccDetails}">
+        <div class="slds-p-around_x-small">
+            <c:headerComp accountId="{!v.accRecId}"></c:headerComp>
+        </div>
+        <div class="slds-p-around_x-small">
+            <lightning:card title="Account Details:" iconName="standard:account">
+                <aura:set attribute="actions">
+                    <div class="slds-p-around_x-small">
+                        <lightning:button label="Go Back" variant="brand" onclick="{!c.goBack}" />
+                    </div>
+                </aura:set>
+                <lightning:recordForm recordId="{!v.accRecId}" mode="readonly" layoutType="Full" columns="2"
+                    objectApiName="Account">
+                </lightning:recordForm>
+            </lightning:card>
+        </div>
+
+    </aura:if>
+</aura:component>

@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="Order List From Platform Events">
+        <div>
+            Order Number : {orderNumber}
+        </div>
+        
+        <template for:each={orderList} for:item="order">
+            <div key={order.id}>
+                <div class="slds-p-around_medium">
+                    Order Number -- {order.orderNo}
+                </div>
+            </div>
+        </template>
+
+    </lightning-card>
+    
+</template>

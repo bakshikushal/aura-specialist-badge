@@ -1,0 +1,14 @@
+.THIS.hoverup {
+    background-color:floralwhite
+}
+.THIS.hoverup:hover {
+    background-color: lavender;
+}
+
+.THIS .btn{
+    width: 100%;
+}
+
+.THIS .btn-modal{
+    width: 25%;
+}

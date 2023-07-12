@@ -1,0 +1,214 @@
+<template>
+    <div>
+        <div class="slds-p-around_x-small">
+            <c-select-acc-picklists oncityselect={handleCitySelect} onindselect={handleIndselect} onorgselect={handleOrgSelect} oncallrest={callRestService}>
+            </c-select-acc-picklists>
+        </div>
+        <div class="slds-p-around_x-small">
+            <template if:true={showAccounts}>
+                <lightning-card>
+                    <div slot="title" class="slds-align_absolute-center">
+                        {cardtitle}
+                    </div>
+                    <lightning-layout multiple-rows>
+                        <template for:each={accRecords} for:item="acc">
+                            <lightning-layout-item key={acc.Id} size="12" large-device-size="3" medium-device-size="6"
+                                small-device-size="12" class="slds-p-horizontal_xx-small">
+                                <lightning-card>
+                                    <lightning-tile label={acc.Name} name={acc.Id} class="card ">
+                                        <div class="slds-grid slds-grid_vertical">
+                                            <div class="slds-p-around_x-small">
+                                                <div class="slds-grid slds-gutters">
+                                                    <div class="slds-col  slds-size_1-of-2 ">
+                                                        <div
+                                                            class="slds-grid slds-grid_vertical slds-p-around_x-small ">
+                                                            <div>
+                                                                <lightning-formatted-phone class="slds-size_full"
+                                                                    value={acc.Phone}>
+                                                                </lightning-formatted-phone>
+                                                            </div>
+                                                            <div>
+                                                                <lightning-formatted-text class="slds-size_full"
+                                                                    value={acc.Industry}>
+                                                                </lightning-formatted-text>
+                                                            </div>
+                                                            <div>
+                                                                <lightning-formatted-text class="slds-size_full"
+                                                                    value={acc.Id}>
+                                                                </lightning-formatted-text>
+                                                            </div>
+                                                            <div>
+                                                                <lightning-formatted-text class="slds-size_full"
+                                                                    value={acc.BillingCity}>
+                                                                </lightning-formatted-text>
+                                                            </div>
+                                                            <!--
+                                                            <div >
+                                                                <lightning-formatted-text class="slds-size_full"
+                                                                    value={acc.Rating}>
+                                                                </lightning-formatted-text>
+                                                            </div>
+                                                            -->
+                                                        </div>
+                                                    </div>
+                                                    <div class="slds-col slds-size_1-of-2">
+                                                        <img src={resortImg}>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slds-p-around_small ">
+                                                <div class="slds-p-bottom_x-small slds-truncate_container_75 slds-align_absolute-center">
+                                                    <lightning-button label="View Account Details" value={acc.Id}
+                                                        onclick={viewAccount} variant="brand"
+                                                        class="slds-button slds-button_brand slds-button_stretch">
+                                                    </lightning-button>
+                                                </div>
+                                                <div class="slds-p-bottom_x-small slds-truncate_container_75 slds-align_absolute-center">
+                                                    <lightning-button label="View Related Contacts" value={acc.Id}
+                                                        onclick={viewContacts} variant="brand"
+                                                        class="slds-button slds-button_brand slds-button_stretch">
+                                                    </lightning-button>
+                                                </div>
+                                                <div class=" slds-truncate_container_75 slds-align_absolute-center">
+                                                    <lightning-button label="Add Opportunities" value={acc.Id}
+                                                        onclick={showOpp} variant="brand"
+                                                        class="slds-button slds-button_brand slds-button_stretch">
+                                                    </lightning-button>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </lightning-tile>
+                                </lightning-card>
+                            </lightning-layout-item>
+                        </template>
+                    </lightning-layout>
+                </lightning-card>
+            </template>
+            <template if:false={showAccounts}>
+                <span style="color: red;" class="slds-align_absolute-center">
+                    <strong>NO ACCOUNTS FOR THE SELECTED CRITERIA!!!</strong>
+                </span>
+            </template>
+            <!-- This Logic is to Show Modal for Show Related Contacts Page-->
+            <template if:true={showConList}>
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                    aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                title="Close">
+                                <lightning-button-icon icon-name="utility:close" size="medium" 
+                                    onclick={closeModal} variant="brand">
+                                </lightning-button-icon>
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                            <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Related Contacts</h2>
+                            <p class="slds-m-top_x-small">
+                                Account : {accRecord.Name}
+                            </p>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <template if:true={conList.length}>
+                                <template for:each={conList} for:item="con" for:index="i">
+                                    <lightning-card key={con.Id}>
+                                        <lightning-layout>
+                                            <lightning-layout-item size="4">
+                                                <div class="slds-grid slds-gutters slds-align_absolute-center">
+                                                    <div class="slds-col slds-size_1-of-2">
+                                                        <lightning-formatted-text value={con.Name}>
+                                                        </lightning-formatted-text>
+                                                    </div>
+                                                    <div class="slds-col slds-size_1-of-2">
+                                                        <lightning-button-icon icon-name="utility:delete"
+                                                            tooltip="Delete Contact" variant="brand" value={con.Id}
+                                                            onclick={delcontact}>
+                                                        </lightning-button-icon>
+                                                    </div>
+                                                </div>
+                                            </lightning-layout-item>
+                                        </lightning-layout>
+
+                                    </lightning-card>
+                                </template>
+                            </template>
+                            <template if:false={conList.length}>
+                                <div class="slds-align_absolute-center" style="color: red;">
+                                    <strong> NO RELATED CONTACTS FOR THIS MEMBER </strong>
+                                </div>
+                            </template>
+
+                        </div>
+                        <footer class="slds-modal__footer">
+                            <div>
+                                <div class="slds-align_absolute-center slds-p-around_x-small" style="width: 75%;">
+                                    <lightning-button class="slds-button slds-button_destructive slds-button_stretch"
+                                        label="Cancel" variant="destructive" onclick={closeModal}></lightning-button>
+                                    <lightning-button class="slds-button slds-button_brand slds-button_stretch"
+                                        label="Add Contacts" variant="brand" value={singleAccId} onclick={addContacts}>
+                                    </lightning-button>
+                                </div>
+                            </div>                            
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+            <!-- This Logic is to Show Modal for New Opp Creation Page-->
+            <template if:true={showCreateOpp}>
+                <section role="dialog" tabindex="-1"  aria-modal="true"
+                     class="slds-modal slds-fade-in-open slds-modal_medium">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                title="Close">
+                                <lightning-button-icon icon-name="utility:close" size="medium" 
+                                    onclick={closeModal} variant="brand">
+                                </lightning-button-icon>
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                            <h2 class="slds-modal__title slds-hyphenate">Add Related Opportunities</h2>
+                            <p class="slds-m-top_x-small">
+                                Account : {singleAccId}
+                            </p>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium" >
+                            <lightning-card>
+                                <div class=" slds-grid slds-gutters slds-wrap ">                                    
+                                    <div class="slds-col slds-size_1-of-2">
+                                        <lightning-input type="text" label="Account Name" value={singleAccId} disabled></lightning-input>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-2">
+                                        <lightning-input type="date" label="Close Date" onchange={handleDateChange} value={oppCloseDate}></lightning-input>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-2">
+                                        <lightning-input type="text" label="Opportunity Name" onchange={handleOppName} value={oppName}></lightning-input>
+                                    </div>                                    
+                                    <div class="slds-col slds-size_1-of-2">
+                                        <lightning-combobox label="Select Stage" value={oppStage} options={stageList} onchange={handleStageChange}></lightning-combobox>
+                                    </div>
+                                </div>
+                            </lightning-card>
+                        </div>
+                        <footer class="slds-modal__footer">
+                            <div>
+                                <div class="slds-align_absolute-center slds-p-around_x-small slds-truncate_container_75" >
+                                    <lightning-button class="slds-button slds-button_destructive slds-button_stretch"
+                                        label="Cancel" variant="destructive" onclick={closeModal}></lightning-button>
+                                    
+                                        <lightning-button class="slds-button slds-button_brand slds-button_stretch"
+                                        label="Add Opportunity" variant="brand" value={singleAccId} onclick={addOppRecord}>
+                                    </lightning-button>
+                                </div>
+                            </div>                            
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+        </div>
+
+    </div>
+
+</template>

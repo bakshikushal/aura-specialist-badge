@@ -1,0 +1,16 @@
+.card{
+    background-color: floralwhite;
+    transition: background-color .1s ease-in ;
+}
+
+.card:hover{
+    background-color: lavender;
+}
+
+.btn{
+    width: 100%;
+}
+
+.btnmodal{
+    width: 50%;
+}

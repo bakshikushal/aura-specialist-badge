@@ -1,0 +1,21 @@
+<apex:page standardController="Position__c" >
+<apex:form >
+  <apex:sectionHeader title="Position Details" subtitle="{!Position__c.name}"/>
+  <apex:pageblock title="Job Details">
+      <apex:pageblocksection title="Information" columns="1" collapsible="false">
+          <apex:outputField value="{!Position__c.name}"/>
+          <apex:outputField value="{!Position__c.Job_Description__c}"/>
+          <apex:outputField value="{!Position__c.Responsibilities__c}"/>
+          <apex:outputField value="{!Position__c.Location__c}"/>
+          <apex:outputField value="{!Position__c.Location_City_State__c}"/>
+          <apex:outputField value="{!Position__c.Programming_Languages_2__c}"/>          
+          <apex:outputField value="{!Position__c.Start_Date__c}"/>          
+      </apex:pageblocksection>
+      <apex:pageblockButtons >                    
+          <apex:outputLink value="enterJobApp?jobid={!Position__c.id}">
+                  APPLY FOR JOB
+          </apex:outputLink>
+      </apex:pageblockButtons>
+  </apex:pageblock>
+</apex:form>
+</apex:page>

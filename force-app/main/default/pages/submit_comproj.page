@@ -1,0 +1,9 @@
+<apex:page controller="enter_companyproject">
+<apex:form >
+<apex:pageBlock title="Data Added">
+    
+    <apex:commandButton value="Enter New Data" action="{!enter_company}" />
+    
+</apex:pageBlock>
+</apex:form>
+</apex:page>

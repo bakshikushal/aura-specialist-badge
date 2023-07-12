@@ -1,0 +1,26 @@
+<apex:page standardController="Candidate__c" extensions="ApplyforJobExtension">
+<apex:form >
+<apex:sectionHeader title="Apply For Position" subtitle="{!position.name}"/>
+    <apex:pageblock title="Position Info">
+        <apex:pageblocksection columns="1" >
+            <apex:outputfield value="{!position.name}"/>
+            <apex:outputfield value="{!position.Job_Description__c}"/>
+            <apex:outputfield value="{!position.Educational_Requirement__c}"/>
+        </apex:pageblocksection>
+    </apex:pageblock>
+    <apex:pageblock title="Candidate Information">
+        <apex:pageblocksection columns="1">
+            <apex:inputField value="{!candidate.First_Name__c}"/>
+            <apex:inputField value="{!candidate.Last_Name__c}"/>
+            <apex:inputField value="{!candidate.Education__c}"/>
+            <apex:inputField value="{!candidate.Years_Of_Experience__c}"/>
+            <apex:inputField value="{!candidate.Currently_Employed__c}"/>
+            <apex:inputField value="{!candidate.Email__c}"/>
+            <apex:inputField value="{!candidate.Phone__c}"/>            
+        </apex:pageblocksection>
+        <apex:pageBlockButtons location="Bottom" >
+            <apex:commandButton action="{!createjobapp}" value="Save"/>
+        </apex:pageBlockButtons>
+    </apex:pageblock>
+</apex:form>
+</apex:page>

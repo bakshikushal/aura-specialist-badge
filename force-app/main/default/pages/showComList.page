@@ -1,0 +1,36 @@
+<apex:page controller="showCompany">
+  <apex:form >
+ <apex:pageBlock title="Search For Companies">
+ 
+     <apex:inputtext value="{!Keyword}"/> 
+     <apex:commandButton value="Search Company" Action="{!showCompanyList}" />
+     
+     <apex:pageBlockTable value="{!comList}" var="r">
+         <apex:column value="{!r.Name}"  />
+         <apex:column value="{!r.Location__c}"  />
+         <apex:column value="{!r.NoOfEmployees__c}"  />
+     
+     </apex:pageBlockTable>
+ </apex:pageBlock>
+ 
+ <apex:pageBlock title="Search for Location"> 
+     <apex:inputText Value="{!comName}"/>
+     <apex:commandButton value="Search Location" action="{!showLocList}"  />
+
+     <apex:pageBlockTable value="{!locList}" var="l" >
+         <apex:column value="{!l.name}" />
+     </apex:pageBlockTable>   
+ </apex:pageBlock>
+ 
+ <apex:pageBlock title="Projects:">
+     
+      <apex:pageBlockTable value="{!projList}" var="p" >
+         <apex:column value="{!p.name}" />
+         <apex:column value="{!p.TotalMembers__c}" />
+         <apex:column value="{!p.CompanyName__r.name}" />
+         </apex:pageBlockTable> 
+ </apex:pageBlock>
+ 
+ 
+ </apex:form>
+</apex:page>

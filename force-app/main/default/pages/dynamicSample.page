@@ -1,0 +1,12 @@
+<apex:page standardController="Account" extensions="dynamicBindSample">
+<apex:form >
+    <apex:pageBlock Title="Edit fields Using Dynamic Bind">
+        <apex:pageBlockSection columns="1" title="Edit Fields">
+            <apex:inputField value="{!Account.Name}"/>
+            <apex:repeat value="{!listOfFields}" var="F"> 
+                <apex:inputField value="{!Account[F]}" rendered="{!IF(contains(F,'owner'), False, True)}"/>                               
+            </apex:repeat>                 
+        </apex:pageBlockSection> 
+    </apex:pageBlock>        
+</apex:form>  
+</apex:page>

@@ -1,0 +1,17 @@
+<apex:page >
+  <!-- Begin Default Content REMOVE THIS -->
+  <apex:form >
+      <apex:pageBlock title="My First Page">
+          <apex:pageBlockSection title="My First Section">
+          </apex:pageBlockSection>
+      </apex:pageBlock>
+      
+      <apex:pageBlock title="My Second Page">
+          
+      </apex:pageBlock>
+  </apex:form>
+  
+  <h1>Congratulations Kushal You Are Doing Great</h1>
+  This is your new Page
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

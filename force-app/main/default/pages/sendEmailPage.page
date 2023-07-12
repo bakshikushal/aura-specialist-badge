@@ -1,0 +1,25 @@
+<apex:page controller="sendEmail">
+    <apex:pageBlock title="Mail Details">
+      <br> <p> Here are Account: {!acc.name} details </p> </br>
+        <apex:dataTable value="{!acc.contacts}" var="con"  border="1">
+           <apex:column value="{!con.name}" headerValue="Name" width="250"  />
+           <apex:column value="{!con.email}" headerValue="Mail" width="250" /> 
+        </apex:dataTable>    
+    <apex:form >
+        <br/> 
+        <apex:outputLabel value="Subject"  ></apex:outputLabel>
+        <br/>
+        <apex:inputText value="{!Subject}" maxlength="100"/>   
+        <br> </br>
+        <br> </br>
+        <apex:outputLabel value="Body" ></apex:outputLabel>
+        <br/>
+        <apex:inputTextarea value="{!Body}" rows="10" cols="100"/>
+        <br/>
+        <br/>
+        <apex:commandButton action="{!send}" value="Send Mail"/>
+    </apex:form>
+    
+    
+    </apex:pageBlock>  
+</apex:page>

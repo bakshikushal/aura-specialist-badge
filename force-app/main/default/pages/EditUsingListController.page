@@ -1,0 +1,19 @@
+<apex:page standardController="Account" recordSetVar="acc">
+    <apex:form >
+        <apex:pageblock title="Edit Accounts">
+            <apex:pageblockSection title="Account Details">
+                <apex:pageblockTable var="a" value="{!acc}">
+                    <apex:column value="{!a.name}"/>
+                    <apex:column value="{!a.phone}"/>
+                    <apex:column headerValue="Fax">
+                        <apex:inputField value="{!a.fax}"/>
+                    </apex:column>
+                </apex:pageblockTable>
+            </apex:pageblockSection>
+            <apex:pageblockButtons >
+                <apex:commandButton action="{!Save}" value="Save"/>
+                <apex:commandButton action="{!Cancel}" value="Cancel"/>
+            </apex:pageblockButtons>
+        </apex:pageblock>        
+    </apex:form>  
+</apex:page>

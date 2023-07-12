@@ -1,0 +1,33 @@
+<apex:page standardController="Contact"  recordSetVar="contacts"  sidebar="false">
+ <apex:form >
+ <apex:pageBlock Title="Contact Details"  > 
+    <apex:pageMessages />  
+    
+    <apex:selectList value="{!FilterID}" size="1"> 
+        <apex:selectOptions value="{!listViewOptions}"/>
+        <apex:actionSupport event="onChange" reRender="contact_list"/>
+    </apex:selectList>
+    
+    <apex:pageblocktable value="{!contacts}" var="con_list" id="contact_list" >
+        <apex:column value="{!con_list.firstname}"/>
+        <apex:column value="{!con_list.firstname}"/>
+        <apex:column value="{!con_list.phone}"/>        
+        <apex:column value="{!con_list.email}">
+            <apex:facet name="header">
+                <apex:commandlink action="{!save}">
+                    Email
+                </apex:commandlink>   
+            </apex:facet>
+        </apex:column>
+    </apex:pageblocktable> 
+    
+    <apex:selectList value="{!PageSize}" size="1">
+        <apex:selectOption itemValue="5" itemlabel="5"/>
+        <apex:selectOption itemValue="10" itemlabel="10"/>
+        <apex:selectOption itemValue="15" itemlabel="15"/>
+        <apex:actionsupport event="onChange" reRender="contact_list" />
+    </apex:selectList>
+   
+ </apex:pageBlock>
+ </apex:form>
+</apex:page>
